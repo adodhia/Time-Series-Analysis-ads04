@@ -1,5 +1,3 @@
-class EnergyModel:
-
 import os
 import pickle
 import urllib.request
@@ -10,6 +8,7 @@ import seaborn; seaborn.set()
 from datetime import date, datetime
 from fbprophet import Prophet
 
+class EnergyModel:
 
     def __init__(self):
 
