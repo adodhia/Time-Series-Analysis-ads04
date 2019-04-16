@@ -1,21 +1,53 @@
 class EnergyModel:
 
+import os
+import pickle
+import urllib.request
+from model import EnergyModel as Model
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set()
+from datetime import date, datetime
+from fbprophet import Prophet
+
+
     def __init__(self):
 
         self.model = None
 
     def preprocess_training_data(self, df):
+        
+        df = df.rename(columns={'day': 'ds', 'consumption': 'y'}) 
+        return df
 
-        raise NotImplementedError
+        #raise NotImplementedError
+
 
     def fit(self, X, y):
+        
+        df = pd.DataFrame({'ds': X, 'y': y})
+        #raise NotImplementedError
 
-        raise NotImplementedError
+        self.model = Prophet(growth='linear',
+                             holidays=bank_holidays,
+                             weekly_seasonality=True,
+                             yearly_seasonality=True,
+                             seasonality_mode='additive')
+
+        self.model.fit(df)
 
     def preprocess_unseen_data(self, df):
 
-        raise NotImplementedError
+        #raise NotImplementedError
+        X = pd.DatetimeIndex(df['day'])
+
+        return X
 
     def predict(self, X):
 
-        raise NotImplementedError
+        #raise NotImplementedError
+        df_dates = self.model.make_future_dataframe(periods=X.shape[0],
+                                                    include_history=False)
+        predictions = self.model.predict(df_dates)
+
+        return pd.Series(predictions.yhat.values, predictions.ds)
