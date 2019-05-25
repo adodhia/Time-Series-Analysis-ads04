@@ -19,13 +19,11 @@ class EnergyModel:
         df = df.rename(columns={'day': 'ds', 'consumption': 'y'}) 
         return df
 
-        #raise NotImplementedError
-
+     
 
     def fit(self, X, y):
         
         df = pd.DataFrame({'ds': X, 'y': y})
-        #raise NotImplementedError
 
         self.model = Prophet(growth='linear',
                              holidays=bank_holidays,
@@ -37,7 +35,7 @@ class EnergyModel:
 
     def preprocess_unseen_data(self, df):
 
-        #raise NotImplementedError
+   
         X = pd.DatetimeIndex(df['day'])
 
         return X
