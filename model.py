@@ -2,7 +2,7 @@ import pickle
 import urllib.request
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn; seaborn.set()
+import seaborn; 
 from datetime import date, datetime
 from fbprophet import Prophet
 
@@ -29,10 +29,10 @@ class EnergyModel:
 
     def fit(self, X, y):
         
-       bank_holidays = pd.DataFrame({
+        bank_holidays = pd.DataFrame({
             'holiday': 'BankHoliday',
             'ds': pd.to_datetime(HOLIDAYS)
-        })
+         })
 
         df = pd.DataFrame({'ds': X, 'y': y})
 
