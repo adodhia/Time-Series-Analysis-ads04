@@ -1,9 +1,4 @@
-import pickle
-import urllib.request
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn; 
-from datetime import date, datetime
 from fbprophet import Prophet
 
 
