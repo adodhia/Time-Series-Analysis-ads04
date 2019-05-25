@@ -1,7 +1,5 @@
-
 import pickle
 import urllib.request
-from model import EnergyModel as Model
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn; seaborn.set()
