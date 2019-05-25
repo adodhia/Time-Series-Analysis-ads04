@@ -16,8 +16,9 @@ class EnergyModel:
 
     def preprocess_training_data(self, df):
         
-        df = df.rename(columns={'day': 'ds', 'consumption': 'y'}) 
-        return df
+        X = pd.DatetimeIndex(df['day'])
+        return X, df.consumption
+
 
      
 
