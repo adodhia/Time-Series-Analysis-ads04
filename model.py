@@ -1,4 +1,4 @@
-import os
+
 import pickle
 import urllib.request
 from model import EnergyModel as Model
